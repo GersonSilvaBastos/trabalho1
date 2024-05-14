@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		body {
+    			margin: 0;
+    			padding: 0;
+    			display: flex;
+    			justify-content: center;
+    			align-items: center;
+    			height: 100vh;
+    			background-color: #e6f0ff;
+		}
+
+		div {
+    			text-align: center;
+    			background-color: white;
+    			padding: 20px;
+    			border-radius: 10px;
+    			box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+		}
+
+		header {
+    			font-size: 24px;
+    			margin-bottom: 20px;
+		}
+
+		input[type="text"],
+		input[type="password"],
+		button {
+    			width: 100%;
+    			padding: 10px;
+    			margin-bottom: 10px;
+    			border: 1px solid #ccc;
+    			border-radius: 5px;
+    			box-sizing: border-box; 
+		}
+
+		button {
+    			background-color: #007bff;
+    			color: white;
+    			cursor: pointer;
+		}
+
+		button:hover {
+    		background-color: #0056b3;
+		}
+
+		a {
+    			text-decoration: none;
+    			color: #007bff;
+		}
+
+		a:hover {
+    			text-decoration: underline;
+		}
+
+	</style>
+    	<title>Login | OpenMarket</title>
+</head>
+<body>
+    <div>
+        <header>Login</header>
+        <div>
+            <input type="text" placeholder="Email" autocomplete="off" required>
+        </div>
+        <div>
+            <input type="password" placeholder="Password" autocomplete="off" required>
+        </div>
+        <div>
+            <label>
+                <input type="checkbox"> Remember me
+            </label>
+            <a href="#">Forgot password</a>
+        </div>
+        <div>
+            <button></button>
+            <label>Sign In</label>
+        </div>
+        <div>
+            <p>Don't have an account? <a href="#">Sign Up</a></p>
+        </div>
+    </div>
+</body>
+</html>
