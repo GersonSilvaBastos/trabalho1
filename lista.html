@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Produtos | OpenMarket</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background-color: #f9f9f9;
+            padding: 20px 0;
+            text-align: center;
+            border-bottom: 2px solid #ddd;
+        }
+
+        header h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        header a {
+            color: #007bff;
+            text-decoration: none;
+            margin-right: 10px;
+        }
+
+        header form {
+            display: inline-block;
+        }
+
+        header input[type="text"] {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px 0 0 5px;
+            font-size: 16px;
+        }
+
+        header button[type="submit"] {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 0 5px 5px 0;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .product-list {
+            padding: 20px 0;
+        }
+
+        .product-list h2 {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .product-card {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .product-card .product {
+            padding: 20px;
+            text-align: center;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .product-card h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .product-card p {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .product-card span {
+            font-weight: bold;
+            color: #007bff;
+        }
+
+        .filter-options {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .filter-options select {
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        .add-to-cart {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .add-to-cart:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Lista de Produtos</h1>
+            <a href="#">Login</a> / <a href="#">Criar Conta</a>
+            <form action="#" method="get">
+                <input type="text" name="search" placeholder="Buscar produtos...">
+                <button type="submit">Buscar</button>
+            </form>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="filter-options">
+            <select name="category" id="category">
+                <option value="">Todas as Categorias</option>
+                <option value="eletronica">Eletrônica</option>
+                <option value="vestuario">Vestuário</option>
+                <option value="alimentos">Alimentos</option>
+            </select>
+            <select name="sort" id="sort">
+                <option value="preco">Ordenar por Preço</option>
+                <option value="popularidade">Ordenar por Popularidade</option>
+            </select>
+        </div>
+
+        <section class="product-list">
+            <h2>Lista de Produtos</h2>
+            <div class="product-card">
+                <div class="product">
+                    <img src="product1.jpg" alt="Produto 1">
+                    <h3>Produto 1</h3>
+                    <p>Descrição breve do Produto 1...</p>
+                    <span>$50</span>
+                    <button class="add-to-cart">Adicionar ao Carrinho</button>
+                </div>
+                <div class="product">
+                    <img src="product2.jpg" alt="Produto 2">
+                    <h3>Produto 2</h3>
+                    <p>Descrição breve do Produto 2...</p>
+                    <span>$30</span>
+                    <button class="add-to-cart">Adicionar ao Carrinho</button>
+                </div>
+                <div class="product">
+                    <img src="product1.jpg" alt="Produto 3">
+                    <h3>Produto 3</h3>
+                    <p>Descrição breve do Produto 3...</p>
+                    <span>$25</span>
+                    <button class="add-to-cart">Adicionar ao Carrinho</button>
+                </div>
+                <div class="product">
+                    <img src="product2.jpg" alt="Produto 4">
+                    <h3>Produto 4</h3>
+                    <p>Descrição breve do Produto 4...</p>
+                    <span>$40</span>
+                    <button class="add-to-cart">Adicionar ao Carrinho</button>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
+
