@@ -1,143 +1,49 @@
 <!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carrinho de Compras | OpenMarket</title>
+    <title>Checkout | OpenMarket</title>
     <link rel="stylesheet" href="styles.css">
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #e6f0ff; /* Azul claro */
-        }
-
-        .container {
-            text-align: center;
-            background-color: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
-            max-width: 600px;
-            width: 100%;
-        }
-
-        header {
-            font-size: 24px;
-            margin-bottom: 20px;
-        }
-
-        .product-list {
-            text-align: left;
-            margin-bottom: 20px;
-        }
-
-        .product {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #ccc;
-            padding: 10px 0;
-        }
-
-        .product-info {
-            flex: 1;
-        }
-
-        .product-actions {
-            flex-shrink: 0;
-        }
-
-        .remove-btn {
-            background-color: #dc3545; /* Vermelho */
-            color: white;
-            padding: 5px 10px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .remove-btn:hover {
-            background-color: #c82333; /* Vermelho mais escuro no hover */
-        }
-
-        .quantity-input {
-            width: 50px;
-            text-align: center;
-        }
-
-        .cart-total {
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
-
-        .checkout-btn {
-            background-color: #007bff; /* Azul */
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .checkout-btn:hover {
-            background-color: #0056b3; /* Azul mais escuro no hover */
-        }
-
-        .add-product-btn {
-            background-color: #28a745; /* Verde */
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-bottom: 20px;
-        }
-
-        .add-product-btn:hover {
-            background-color: #218838; /* Verde mais escuro no hover */
-        }
-    </style>
 </head>
 <body>
-    <div class="container">
-        <header>Carrinho de Compras</header>
-        <button class="add-product-btn">Adicionar Produto</button>
-        <div class="product-list">
-            <!-- Produto 1 -->
-            <div class="product">
-                <div class="product-info">
-                    <h2>Produto 1</h2>
-                    <p>Preço: R$ 20.00</p>
+    <header>
+        <div class="container">
+            <h1>OpenMarket</h1>
+            <p>Complete sua compra</p>
+        </div>
+    </header>
+    <section class="cart-list">
+        <div class="container">
+            <h2>Seu Carrinho</h2>
+            <div class="cart-item">
+                <img src="product1.jpg" alt="Produto 1">
+                <div class="details">
+                    <h3>Produto 1</h3>
+                    <p>Descrição breve do Produto 1...</p>
                 </div>
-                <div class="product-actions">
-                    <button class="remove-btn">Remover</button>
-                    <input type="number" class="quantity-input" value="1" min="1">
+                <div class="actions">
+                    <input type="number" value="1">
+                    <span>$50</span>
                 </div>
             </div>
-            <!-- Produto 2 -->
-            <div class="product">
-                <div class="product-info">
-                    <h2>Produto 2</h2>
-                    <p>Preço: R$ 15.00</p>
+            <div class="cart-item">
+                <img src="product2.jpg" alt="Produto 2">
+                <div class="details">
+                    <h3>Produto 2</h3>
+                    <p>Descrição breve do Produto 2...</p>
                 </div>
-                <div class="product-actions">
-                    <button class="remove-btn">Remover</button>
-                    <input type="number" class="quantity-input" value="1" min="1">
+                <div class="actions">
+                    <input type="number" value="1">
+                    <span>$30</span>
                 </div>
             </div>
+            <div class="total">
+                <h3>Total: $80</h3>
+                <button class="checkout">Finalizar Compra</button>
+            </div>
         </div>
-        <div class="cart-total">
-            <p>Total do Carrinho: R$ 35.00</p>
-        </div>
-        <div class="checkout-options">
-            <button class="checkout-btn">Ir para o Checkout</button>
-        </div>
-    </div>
+    </section>
 </body>
 </html>
-
 
