@@ -4,46 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Checkout | OpenMarket</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/checkout.js" defer></script>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <h1>OpenMarket</h1>
-            <p>Complete sua compra</p>
-        </div>
-    </header>
-    <section class="cart-list">
-        <div class="container">
-            <h2>Seu Carrinho</h2>
-            <div class="cart-item">
-                <img src="product1.jpg" alt="Produto 1">
-                <div class="details">
-                    <h3>Produto 1</h3>
-                    <p>Descrição breve do Produto 1...</p>
-                </div>
-                <div class="actions">
-                    <input type="number" value="1">
-                    <span>$50</span>
-                </div>
+    <div class="container">
+        <header>Checkout</header>
+        <div class="cart-list">
+            <div class="item">
+                <span>Produto 1</span>
+                <span>$50</span>
+                <input type="number" value="1">
+                <button>Remover</button>
             </div>
-            <div class="cart-item">
-                <img src="product2.jpg" alt="Produto 2">
-                <div class="details">
-                    <h3>Produto 2</h3>
-                    <p>Descrição breve do Produto 2...</p>
-                </div>
-                <div class="actions">
-                    <input type="number" value="1">
-                    <span>$30</span>
-                </div>
-            </div>
-            <div class="total">
-                <h3>Total: $80</h3>
-                <button class="checkout">Finalizar Compra</button>
+            <div class="item">
+                <span>Produto 2</span>
+                <span>$30</span>
+                <input type="number" value="1">
+                <button>Remover</button>
             </div>
         </div>
-    </section>
+        <div class="total">
+            Total: $80
+        </div>
+        <button class="checkout">Finalizar Compra</button>
+    </div>
 </body>
 </html>
+
 

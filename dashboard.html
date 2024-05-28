@@ -4,28 +4,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard | OpenMarket</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/dashboard.js" defer></script>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <h1>OpenMarket</h1>
-            <p>Bem-vindo ao seu dashboard</p>
-        </div>
-    </header>
-    <section class="dashboard">
-        <div class="stats">
-            <h2>Estatísticas</h2>
-            <p>Resumo das suas atividades...</p>
-        </div>
-        <div class="products">
-            <h2>Seus Produtos</h2>
-            <button class="manage">Gerenciar Produtos</button>
-        </div>
-        <div class="orders">
-            <h2>Pedidos</h2>
-            <p>Lista de pedidos recentes...</p>
-        </div>
-    </section>
+    <div class="container">
+        <header>Dashboard</header>
+
+        <section class="sales-stats">
+            <h2>Estatísticas de Vendas</h2>
+            <p>Total de Vendas: $1000</p>
+            <p>Número de Pedidos: 50</p>
+            <p>Produtos Vendidos: 100</p>
+        </section>
+
+        <section class="product-list">
+            <h2>Meus Produtos</h2>
+            <ul>
+                <li>
+                    <span>Nome do Produto 1</span>
+                    <span>Preço: $50</span>
+                    <span>Disponível: 10</span>
+                    <button>Editar</button>
+                    <button>Eliminar</button>
+                </li>
+                <li>
+                    <span>Nome do Produto 2</span>
+                    <span>Preço: $30</span>
+                    <span>Disponível: 20</span>
+                    <button>Editar</button>
+                    <button>Eliminar</button>
+                </li>
+            </ul>
+        </section>
+
+        <section class="order-list">
+            <h2>Encomendas Recebidas</h2>
+            <ul>
+                <li>
+                    <span>Número da Encomenda: #1234</span>
+                    <span>Data: 2024-05-14</span>
+                    <span>Total: $100</span>
+                    <button>Processar</button>
+                    <button>Detalhes</button>
+                </li>
+                <li>
+                    <span>Número da Encomenda: #5678</span>
+                    <span>Data: 2024-05-13</span>
+                    <span>Total: $150</span>
+                    <button>Processar</button>
+                    <button>Detalhes</button>
+                </li>
+            </ul>
+        </section>
+    </div>
 </body>
 </html>
+
