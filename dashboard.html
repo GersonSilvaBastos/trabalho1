@@ -1,3 +1,11 @@
+<?php
+session_start();
+if (!isset($_SESSION['user_id']) || !$_SESSION['is_seller']) {
+    header('Location: login.html');
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,55 +18,29 @@
 <body>
     <div class="container">
         <header>Dashboard</header>
-
+        <nav>
+            <a href="index.php" class="btn">Voltar ao Index</a>
+            <a href="add_product.html" class="btn">Adicionar Produto</a>
+            <a href="logout.php" class="btn">Logout</a>
+        </nav>
         <section class="sales-stats">
             <h2>Estatísticas de Vendas</h2>
-            <p>Total de Vendas: $1000</p>
-            <p>Número de Pedidos: 50</p>
-            <p>Produtos Vendidos: 100</p>
+            <p id="total-sales">Total de Vendas: $0</p>
+            <p id="number-of-orders">Número de Pedidos: 0</p>
+            <p id="products-sold">Produtos Vendidos: 0</p>
         </section>
-
         <section class="product-list">
             <h2>Meus Produtos</h2>
-            <ul>
-                <li>
-                    <span>Nome do Produto 1</span>
-                    <span>Preço: $50</span>
-                    <span>Disponível: 10</span>
-                    <button class="edit-product">Editar</button>
-                    <button class="delete-product">Eliminar</button>
-                </li>
-                <li>
-                    <span>Nome do Produto 2</span>
-                    <span>Preço: $30</span>
-                    <span>Disponível: 20</span>
-                    <button class="edit-product">Editar</button>
-                    <button class="delete-product">Eliminar</button>
-                </li>
+            <ul id="product-list">
+                <!-- Products will be loaded here dynamically -->
             </ul>
         </section>
-
         <section class="order-list">
             <h2>Encomendas Recebidas</h2>
-            <ul>
-                <li>
-                    <span>Número da Encomenda: #1234</span>
-                    <span>Data: 2024-05-14</span>
-                    <span>Total: $100</span>
-                    <button class="process-order">Processar</button>
-                    <button class="view-details">Detalhes</button>
-                </li>
-                <li>
-                    <span>Número da Encomenda: #5678</span>
-                    <span>Data: 2024-05-13</span>
-                    <span>Total: $150</span>
-                    <button class="process-order">Processar</button>
-                    <button class="view-details">Detalhes</button>
-                </li>
+            <ul id="order-list">
+                <!-- Orders will be loaded here dynamically -->
             </ul>
         </section>
     </div>
 </body>
 </html>
-
-

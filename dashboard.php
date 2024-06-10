@@ -1,36 +1,9 @@
 <?php
-include 'db.php';
 session_start();
-
-if (!isset($_SESSION['user_id'])) {
+if (!isset($_SESSION['user_id']) || !$_SESSION['is_seller']) {
     header('Location: login.html');
     exit;
 }
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (isset($_POST['add_product'])) {
-        $name = $_POST['name'];
-        $description = $_POST['description'];
-        $price = $_POST['price'];
-        $image = $_POST['image'];
-
-        $sql = "INSERT INTO products (name, description, price, image) VALUES (:name, :description, :price, :image)";
-        $params = [':name' => $name, ':description' => $description, ':price' => $price, ':image' => $image];
-
-        if ($db->query($sql, $params)) {
-            echo "New product added successfully";
-        } else {
-            echo "Error: " . $db->lastErrorMsg();
-        }
-    } elseif (isset($_POST['edit_product'])) {
-        // Handle product edit
-    } elseif (isset($_POST['delete_product'])) {
-        // Handle product deletion
-    }
-}
-
-$products = $db->fetchAll("SELECT * FROM products");
-
 ?>
 
 <!DOCTYPE html>
@@ -40,37 +13,34 @@ $products = $db->fetchAll("SELECT * FROM products");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard | OpenMarket</title>
     <link rel="stylesheet" href="css/styles.css">
+    <script src="js/dashboard.js" defer></script>
 </head>
 <body>
     <div class="container">
         <header>Dashboard</header>
-
+        <nav>
+            <a href="index.php" class="btn">Voltar ao Index</a>
+            <a href="add_product.html" class="btn">Adicionar Produto</a>
+            <a href="logout.php" class="btn">Logout</a>
+        </nav>
+        <section class="sales-stats">
+            <h2>Estatísticas de Vendas</h2>
+            <p id="total-sales">Total de Vendas: $0</p>
+            <p id="number-of-orders">Número de Pedidos: 0</p>
+            <p id="products-sold">Produtos Vendidos: 0</p>
+        </section>
         <section class="product-list">
             <h2>Meus Produtos</h2>
-            <ul>
-                <?php foreach ($products as $product): ?>
-                <li>
-                    <span><?php echo $product['name']; ?></span>
-                    <span>Preço: <?php echo $product['price']; ?></span>
-                    <span>Disponível: <?php echo $product['available']; ?></span>
-                    <button class="edit-product">Editar</button>
-                    <button class="delete-product">Eliminar</button>
-                </li>
-                <?php endforeach; ?>
+            <ul id="product-list">
+                <!-- Products will be loaded here dynamically -->
             </ul>
         </section>
-
-        <section class="add-product">
-            <h2>Adicionar Produto</h2>
-            <form action="dashboard.php" method="post">
-                <input type="text" name="name" placeholder="Nome do Produto" required>
-                <input type="text" name="description" placeholder="Descrição do Produto" required>
-                <input type="number" name="price" placeholder="Preço" required>
-                <input type="text" name="image" placeholder="Imagem URL" required>
-                <button type="submit" name="add_product">Adicionar Produto</button>
-            </form>
+        <section class="order-list">
+            <h2>Encomendas Recebidas</h2>
+            <ul id="order-list">
+                <!-- Orders will be loaded here dynamically -->
+            </ul>
         </section>
     </div>
 </body>
 </html>
-

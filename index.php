@@ -55,12 +55,49 @@ session_start();
                             <h3>${product.name}</h3>
                             <p>${product.description}</p>
                             <span>$${product.price}</span>
-                            <a href="checkout.php" class="btn">Adicionar ao Carrinho</a>
+                            <button class="btn add-to-cart" data-id="${product.id}">Adicionar ao Carrinho</button>
                         `;
                         productContainer.appendChild(productElement);
                     });
+
+                    // Add event listeners to "Add to Cart" buttons
+                    document.querySelectorAll('.add-to-cart').forEach(button => {
+                        button.addEventListener('click', function() {
+                            const productId = this.getAttribute('data-id');
+                            addToCart(productId);
+                        });
+                    });
                 });
         });
+
+        function addToCart(productId) {
+            fetch('cart_actions.php?action=add', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: new URLSearchParams({
+                    'product_id': productId,
+                    'quantity': 1
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    window.location.href = 'checkout.php';
+                } else {
+                    displayMessage('Erro ao adicionar ao carrinho', 'error');
+                }
+            });
+        }
+
+        function displayMessage(message, type) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${type}`;
+            messageDiv.innerText = message;
+            document.body.prepend(messageDiv);
+            setTimeout(() => messageDiv.remove(), 3000);
+        }
     </script>
 </body>
 </html>
