@@ -41,22 +41,39 @@ function addItemToCart($pdo, $user_id) {
     $product_id = $_POST['product_id'];
     $quantity = $_POST['quantity'];
 
-    // Verifique se o item já está no carrinho
-    $stmt = $pdo->prepare("SELECT * FROM cart WHERE user_id = ? AND product_id = ?");
-    $stmt->execute([$user_id, $product_id]);
-    $item = $stmt->fetch();
+    // Verifique a quantidade disponível no estoque
+    $stmt = $pdo->prepare("SELECT stock FROM products WHERE id = ?");
+    $stmt->execute([$product_id]);
+    $product = $stmt->fetch();
 
-    if ($item) {
-        // Atualize a quantidade se o item já estiver no carrinho
-        $stmt = $pdo->prepare("UPDATE cart SET quantity = quantity + ? WHERE user_id = ? AND product_id = ?");
-        $stmt->execute([$quantity, $user_id, $product_id]);
+    if ($product) {
+        $available_stock = $product['stock'];
+
+        // Verifique a quantidade atual no carrinho
+        $stmt = $pdo->prepare("SELECT quantity FROM cart WHERE user_id = ? AND product_id = ?");
+        $stmt->execute([$user_id, $product_id]);
+        $cart_item = $stmt->fetch();
+
+        $current_cart_quantity = $cart_item ? $cart_item['quantity'] : 0;
+
+        if ($current_cart_quantity + $quantity <= $available_stock) {
+            if ($cart_item) {
+                // Atualize a quantidade se o item já estiver no carrinho
+                $stmt = $pdo->prepare("UPDATE cart SET quantity = quantity + ? WHERE user_id = ? AND product_id = ?");
+                $stmt->execute([$quantity, $user_id, $product_id]);
+            } else {
+                // Adicione o novo item ao carrinho
+                $stmt = $pdo->prepare("INSERT INTO cart (user_id, product_id, quantity) VALUES (?, ?, ?)");
+                $stmt->execute([$user_id, $product_id, $quantity]);
+            }
+
+            echo json_encode(['success' => 'Item adicionado ao carrinho']);
+        } else {
+            echo json_encode(['error' => 'Quantidade excede o estoque disponível']);
+        }
     } else {
-        // Adicione o novo item ao carrinho
-        $stmt = $pdo->prepare("INSERT INTO cart (user_id, product_id, quantity) VALUES (?, ?, ?)");
-        $stmt->execute([$user_id, $product_id, $quantity]);
+        echo json_encode(['error' => 'Produto não encontrado']);
     }
-
-    echo json_encode(['success' => 'Item adicionado ao carrinho']);
 }
 
 function updateCartItem($pdo, $user_id) {

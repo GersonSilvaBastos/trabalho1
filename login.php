@@ -1,9 +1,13 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrar | OpenMarket</title>
+    <title>Login | OpenMarket</title>
     <link rel="stylesheet" href="css/styles.css">
     <style>
         body {
@@ -29,7 +33,6 @@
         .login-form form div {
             margin-bottom: 15px;
         }
-        .login-form input[type="text"],
         .login-form input[type="email"],
         .login-form input[type="password"] {
             width: 100%;
@@ -60,35 +63,43 @@
         .login-form a:hover {
             text-decoration: underline;
         }
+        .notification {
+            background-color: #ff4444;
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
     </style>
-    <script src="js/register.js" defer></script>
+    <script src="js/login.js" defer></script>
 </head>
 <body>
-    <div class="login-form" style="width: 600px; ">
-        <header>Registrar</header>
-        <form id="registerForm" action="process_register.php" method="post">
-            <div>
-                <input type="text" name="name" placeholder="Nome" autocomplete="off" required>
+    <div class="login-form" style="width: 500px">
+        <header>Login</header>
+        <?php if (isset($_SESSION['login_error'])): ?>
+            <div class="notification">
+                <?= $_SESSION['login_error'] ?>
             </div>
+            <?php unset($_SESSION['login_error']); ?>
+        <?php endif; ?>
+        <form id="loginForm" action="process_login.php" method="post">
             <div>
                 <input type="email" name="email" placeholder="Email" autocomplete="off" required>
             </div>
             <div>
-                <input type="password" name="password" placeholder="Senha" autocomplete="off" required>
-            </div>
-            <div>
-                <input type="password" name="confirm_password" placeholder="Confirmar Senha" autocomplete="off" required>
+                <input type="password" name="password" placeholder="Password" autocomplete="off" required>
             </div>
             <div>
                 <label>
-                    <input type="checkbox" name="is_seller"> Quero ser um vendedor
+                    <input type="checkbox" name="remember"> Lembrar
                 </label>
+                <a href="#">Esqueceu password</a>
             </div>
             <div>
-                <button type="submit">Registrar</button>
+                <button type="submit">Logar</button>
             </div>
             <div>
-                <p>Já tem uma conta? <a href="login.php">Login</a></p>
+                <p>Ainda não tem conta? <a href="register.html">Registar</a></p>
             </div>
             <div>
                 <a href="index.php">Voltar</a>

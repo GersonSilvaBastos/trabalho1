@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['user_id']) || !$_SESSION['is_seller']) {
-    header('Location: login.html');
+    header('Location: login.php');
     exit;
 }
 
@@ -28,10 +28,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     // Verifique se o arquivo já existe
-    if (file_exists($target_file)) {
-        echo "Desculpe, o arquivo já existe.";
-        $uploadOk = 0;
-    }
+    // if (file_exists($target_file)) {
+    //     echo "Desculpe, o arquivo já existe.";
+    //     $uploadOk = 0;
+    // }
 
     // Verifique o tamanho do arquivo
     if ($image["size"] > 500000) {

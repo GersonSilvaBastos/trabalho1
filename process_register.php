@@ -18,6 +18,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt = $pdo->prepare("INSERT INTO users (name, email, password, is_seller) VALUES (?, ?, ?, ?)");
     $stmt->execute([$name, $email, $hashed_password, $is_seller]);
     echo "Registro concluído com sucesso!";
-    header('Location: login.html');
+    header('Location: login.php');
 }
 ?>
